@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cities</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<link href="/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    	<h2 th:text="${title}"></h2>
+    	<table>
+    		<tr>
+    			<td>teacherId</td> 
+    			<td><input type="text" th:field="${teacher.teacherId}" size=10/></td> 
+    		</tr>
+    		<tr>
+    			<td>Title</td> 
+    			<td><input type="text" th:field="${teacher.title}" size=30/></td> 
+    		</tr>
+    		<tr>
+    			<td>Surname</td> 
+    			<td><input type="text" th:field="${teacher.surname}" size=50/></td> 
+    		</tr>
+    		<tr>
+    			<td>Firstname</td> 
+    			<td><input type="text" th:field="${teacher.firstname}" size=50/></td> 
+    		</tr>
+    		<tr>
+    			<td>Shortname</td> 
+    			<td><input type="text" th:field="${teacher.shortName}" size=10/></td> 
+    		</tr>
+    		<tr>
+    			<td>Sex</td> 
+    			<td><input type="radio" th:field="${teacher.sex}" value="m"/>Male
+        			<input type="radio" th:field="${teacher.sex}" value="f"/>Female
+        		</td> 
+    		</tr>	    				    		
+    	</table>	    
+    </body>
+</html>

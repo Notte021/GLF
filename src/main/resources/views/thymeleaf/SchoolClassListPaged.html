@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="#{schoolClass.caption.plural}"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+ 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+	    	<h2 th:text="#{schoolClass.caption.plural}"></h2>
+	    	<div>
+            	<nobr>
+            		<a class="btn btn-primary btn-sm mb-3" th:href="@{/mvc/schoolClasses/add}" th:text="#{button.add}">...</a>
+            		<a class="btn btn-primary btn-sm mb-3" th:href="@{/v1}" th:text="#{page.main}">...</a>
+            	</nobr>
+       	 	</div>
+		 	<br/>
+		 	
+	        <table class="table table-striped table-responsive-md">
+	            <tr>
+	            	<th>#</th>
+	                <th th:text="#{schoolClass.schoolClassId}"></th>
+	                <th th:text="#{schoolClass.name}"></th>
+	                <th th:text="#{schoolClass.teacher}"></th>
+	                <th></th>
+	            	<th></th>
+	                <th>Students</th>
+	            </tr>
+				<tr th:each="schoolClass, iStat:${schoolClassPage.content}">
+	             	<td th:text="${iStat.count}"></td>
+	                <td th:text="${schoolClass.schoolClassId}"></td>
+	                <td th:text="${schoolClass.name}"></td>
+	                <td th:text="${schoolClass.teacher}"></td>
+	                <td> <a th:href="@{/mvc/schoolClasses/edit/{schoolClassId}(schoolClassId=${schoolClass.schoolClassId})}" th:text="#{button.edit}">...</a> </td>
+		            <td> <a th:href="@{/mvc/schoolClasses/delete/{schoolClassId}(schoolClassId=${schoolClass.schoolClassId})}" th:text="#{button.delete}">...</a> </td>
+		            <td>
+	                	<a th:href="@{'/mvc/students/showBySchoolClass?schoolClassId=' + ${schoolClass.schoolClassId}}">Show students</a>
+	                </td>
+	            </tr>
+	        </table>
+	        <br/>
+	        
+	        <nav aria-label="Page navigation" class="paging">
+                <ul class="pagination" th:if="${schoolClassPage.totalPages > 1}">
+                	<li class="page-item disabled">
+                		<a class="page-link" th:text="#{page.numberOfRecords} + ' ' + ${schoolClassPage.totalElements}" tabindex="-1">...</a>
+			     		<!-- Total Elements: [[${schoolClassPage.totalElements}]] Total Pages: [[${schoolClassPage.totalPages}]] Number: [[${schoolClassPage.number}]] Size: [[${schoolClassPage.size}]] -->
+			     	</li>	
+			     	<li class="page-item">
+                        <a class="page-link" th:href="@{/mvc/schoolClasses/showPaged(size=${schoolClassPage.size}, page=0)}" th:text="#{page.first}" tabindex="-1">...</a>
+                    </li>	             
+                	<li class="page-item" th:classappend="${schoolClassPage.number <= 0 ? 'disabled' : ''}">
+                        <a class="page-link" th:href="@{/mvc/schoolClasses/showPaged(size=${schoolClassPage.size}, page=${schoolClassPage.number-1})}" th:text="#{page.previous}" tabindex="-1">...</a>
+                    </li> 		
+                    <th:block th:each="pageNumber : ${#numbers.sequence(0, schoolClassPage.totalPages-1)}">
+                        <li class="page-item" th:classappend="${pageNumber==schoolClassPage.number ? 'active' : ''}">
+                            <a class="page-link" th:href="@{/mvc/schoolClasses/showPaged(size=${schoolClassPage.size}, page=${pageNumber})}" tabindex="-1" th:text="${pageNumber+1}">...</a>
+                        </li>
+                    </th:block>   		 		
+                    <li class="page-item" th:classappend="${schoolClassPage.number + 1 >= schoolClassPage.totalPages ? 'disabled' : ''}">
+                        <a class="page-link" th:href="@{/mvc/schoolClasses/showPaged(size=${schoolClassPage.size}, page=${schoolClassPage.number+1})}" th:text="#{page.next}" tabindex="-1">...</a>
+                    </li>
+			     	<li class="page-item">
+                        <a class="page-link" th:href="@{/mvc/schoolClasses/showPaged(size=${schoolClassPage.size}, page=${schoolClassPage.totalPages-1})}" th:text="#{page.last}" tabindex="-1">...</a>
+                    </li>                    				
+                </ul>
+            </nav>
+    	</div>
+    </body>
+</html>

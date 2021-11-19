@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="#{schoolClass.caption.singular}"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+ 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+        	<h2 th:text="#{page.caption(#{schoolClass.caption.plural}, ${add} ? #{entity.insert} : #{entity.update})}"></h2>
+
+		    <form action="#" th:action="@{/mvc/schoolClasses/addEdit}"
+		    				 th:object="${department}" method="POST" enctype="application/x-www-form-urlencoded"
+		    				 class="row g-3 needs-validation" novalidate>		   
+		    	<table class="table table-striped table-responsive-md">
+		    		<tr>
+		    			<td th:text="#{schoolClass.schoolClassId}"></td> 
+		    			<td><input type="text" th:field="*{schoolClassId}" size=10 readonly class="form-control"></td> 
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{schoolClass.name}"></td> 
+		    			<td><input type="text" th:field="*{name}" size=50 class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">...</td>
+		    		</tr>		    				
+		    		<tr>
+		    			<td th:text="#{schoolClass.level}"></td> 
+		    			<td><input type="text" th:field="*{level}" size=50 class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('level')}" th:errors="*{level}">...</td>
+		    		</tr>	
+		    		<tr>
+		    			<td th:text="#{schoolClass.description}"></td> 
+		    			<td><input type="text" th:field="*{description}" size=50 class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">...</td>
+		    		</tr>	
+		    		<tr>
+		    			<td th:text="#{department.teacherId}"></td> 
+		    			<td>	    					 
+			      			<select class="form-control" th:field="*{teacher}" required>
+								<option th:each="teacher:${teachers}" 
+										th:value="${teacher.teacherId}" 
+										th:text="${teacher.toString()}">  
+								</option>
+							</select>
+						</td>	
+						<td class="alert alert-danger" th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}">...</td>
+					</tr>	
+		    		<tr>
+		    			<td th:text="#{schoolClass.departmentId}"></td> 
+		    			<td>	    					 
+			      			<select class="form-control" th:field="*{department}" required>
+								<option th:each="department:${departments}" 
+										th:value="${department.departmentId}" 
+										th:text="${department.toString()}">  
+								</option>
+							</select>
+						</td>	
+						<td class="alert alert-danger" th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}">...</td>
+					</tr>					
+		    		<tr>
+		    			<td></td>
+		    			<td>
+		    				<input type="submit" class="btn btn-primary" th:value="#{button.save}"/>
+		    			</td>
+		    		</tr> 
+		        </table>
+		    	<p class="alert alert-danger" th:if="${error != null}" th:text="${error}"></p>
+		    </form>
+		</div>  		
+    </body>
+</html>

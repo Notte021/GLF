@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="#{teacher.caption.singular}" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+ 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+    		<h2 th:text="#{page.caption(#{teacher.caption.singular}, ${add} ? #{entity.insert} : #{entity.update})}"></h2>
+			<div>
+				<nobr>
+					<a class="btn btn-primary btn-sm mb-3" th:href="@{/mvc/teachers/show}" th:text="#{page.show(#{teacher.caption.plural})}">...</a>
+					<a class="btn btn-primary btn-sm mb-3" th:href="@{/v1}" th:text="#{page.main}">...</a>
+				</nobr>
+			</div>
+			<br/>
+
+			<form action="#"  th:action="@{/mvc/teachers/addEdit}"
+		                      th:object="${teacher}" method="POST" enctype="application/x-www-form-urlencoded"
+		                      class="row g-3 needs-validation" novalidate>		                     
+		    	<table class="table table-striped table-responsive-md">
+		    		<tr>
+		    			<td th:text="#{teacher.teacherId}"></td> 
+		    			<td><input type="text" th:field="*{teacherId}" size=10 readonly class="form-control"></td> 
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{teacher.title}"></td> 
+		    			<td><input type="text" th:field="*{title}" size=30 class="form-control">
+		    			</td> 
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{teacher.surname}"></td> 
+		    			<td><input type="text" th:field="*{surname}" size=50 placeholder="" class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</td>
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{teacher.firstname}"></td> 
+		    			<td><input type="text" th:field="*{firstname}" size=50 class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Firstname Error</td>
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{teacher.shortname}"></td> 
+		    			<td><input type="text" th:field="*{shortName}" size=10 class="form-control" required></td> 
+		    			<td class="alert alert-danger" th:if="${#fields.hasErrors('shortName')}" th:errors="*{shortName}">ShortName Error</td>
+		    		</tr>
+		    		<tr>
+		    			<td th:text="#{teacher.sex}"></td> 
+		    			<td><div class="form-check-inline">
+		    					<input type="radio" class="custom-control-input" value="m" th:field="*{sex}">
+                				<label class="custom-control-label" th:text="#{teacher.sex.male}">...</label>
+		    				</div>
+		        			<div class="form-check-inline">
+		        				<input type="radio" class="custom-control-input" value="f" th:field="*{sex}">
+                				<label class="custom-control-label" th:text="#{teacher.sex.female}">...</label>
+		    				</div>
+		        		</td> 
+		        		<td class="alert alert-danger" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Sex Error</td>
+		    		</tr>	 
+		    		<tr>
+		    			<td></td>
+		    			<td>
+		    				<input type="submit" class="btn btn-primary" th:value="#{button.save}"/>
+		    			</td>
+		    		</tr>   				    		
+		    	</table>
+		    	<p class="alert alert-danger" th:if="${error!=null}" th:text="${error}"></p>
+		    </form>	 
+		</div>     
+    </body>
+</html>

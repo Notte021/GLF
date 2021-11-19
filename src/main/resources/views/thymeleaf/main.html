@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Webapplikation (MVC) für die Datenbank 'Schule'</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--		<link rel="stylesheet" href="/webjars/bootstrap/5.0.1/css/bootstrap.min.css" />-->
+<!--        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+ 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">Home</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li><a href="#">Test 1</a></li>
+		      <li><a href="#">Test 2</a></li>
+		      <li><a href="#">Test 3</a></li>
+		    </ul>
+		  </div>
+		</nav>
+    
+    	<h1>Webapplikation (MVC) für die Datenbank 'Schule'</h1>
+    	<ul>
+    		<li>Teacher</li>
+			<ul>
+				<li><a href="/mvc/teachers/show">Show teachers</a></li>
+				<li><a href="/mvc/teachers/showAlternativ">Show teachers (alternative)</a></li>
+				<li><a href="/mvc/teachers/showSorted?sort=surname">Show teachers sorted by surname</a></li>
+				<li><a href="/mvc/teachers/showSorted?sort=firstname">Show teachers sorted by firstname</a></li>
+				<li>
+					Update Teacher:
+					<a href="/mvc/teachers/edit/1?lang=de">
+						<img border="0" alt="Edit Teacher" src="/images/germany.png" width="30" height="30">
+					</a>
+					<a href="/mvc/teachers/edit/1?lang=en">
+						<img border="0" alt="Ändere LehrerIn" src="/images/united-kingdom.png" width="30" height="30">
+					</a>
+				</li>
+				<li>
+					Add Teacher:
+					<a href="/mvc/teachers/add?lang=de">
+						<img border="0" alt="Edit Teacher" src="/images/germany.png" width="30" height="30">
+					</a>
+					<a href="/mvc/teachers/add?lang=en">
+						<img border="0" alt="Ändere LehrerIn" src="/images/united-kingdom.png" width="30" height="30">
+					</a>
+				</li>
+			</ul>
+
+			<li>Departments</li>
+			<ul>
+				<li><a href="/mvc/departments/show?lang=en">Show departments</a></li>
+				<li><a href="/mvc/departments/show?lang=de">Zeige Abteilungen</a></li>
+				<li><a href="/mvc/departments/edit/1">Edit department</a></li>
+			</ul>
+
+			<li>SchoolClasses</li>
+			<ul>
+				<li><a href="/mvc/schoolClasses/show">Show all schoolClasses</a>
+					<a href="/mvc/schoolClasses/show?lang=de">
+						<img border="0" alt="Schulklassen" src="/images/germany.png" width="30" height="30">
+					</a>
+					<a href="/mvc/schoolClasses/show?lang=en">
+						<img border="0" alt="School Classes" src="/images/united-kingdom.png" width="30" height="30">
+					</a>
+				</li>
+				<li><a href="/mvc/schoolClasses/showPaged">Show all schoolClasses paged</a></li>
+				<li><a href="/mvc/schoolClasses/showByDepartment?departmentId=1">Show schoolClasses of department 1</a></li>
+				<li><a href="/mvc/schoolClasses/showByDepartment/2">Show schoolClasses of department 2</a></li>
+			</ul>
+
+			<li>Students</li>
+			<ul>
+				<li><a href="/mvc/students/showBySchoolClass?schoolClassId=1">Show students of school class 1</a></li>
+				<li><a href="/mvc/students/showBySchoolClass/2">Show students of school class 2</a></li>
+			</ul>
+
+			<li>Subjects</li>
+			<ul>
+	    		<li><a href="/mvc/subjects/show">Show subjects</a></li>
+			</ul>
+
+			<li>StudentSubjects</li>
+			<ul>
+				<li><a href="/mvc/studentSubjects/showByStudent?studentId=2">Show studentSubjects of student 2</a></li>
+				<li><a href="/mvc/studentSubjects/showByStudent/3">Show studentSubjects of student 2</a></li>
+			</ul>
+    	</ul>
+    </body>
+</html>

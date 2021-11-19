@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cities</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<link href="/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h2 th:text="${title}"></h2>
+	    <form action="#" th:action="@{/teachers/insert}" th:object="${teacher}" method="POST" enctype="application/x-www-form-urlencoded">
+	    	<p>teacherId: 	    <input type="text" th:field="*{teacherId}" size=10/></p>
+	    	<p>Title: 			<input type="text" th:field="*{title}" size=30/></p>
+	        <p>Surname: 		<input type="text" th:field="*{surname}" size=50/></p>
+	        <p>Firstname: 		<input type="text" th:field="*{firstname}" size=50/></p>
+	        <p>Shortname: 		<input type="text" th:field="*{shortName}" size=10/></p>
+	        <p>Sex: 			<input type="text" th:field="*{sex}" size=5/></p>
+	        <p>					<input type="submit" value="Save" /></p>
+	    </form> 
+    </body>
+</html>

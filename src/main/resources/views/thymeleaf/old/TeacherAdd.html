@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cities</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<link href="/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+	    <form action="#" th:action="@{/add2}" th:object="${teacher}" method="POST">
+		    <label for="surname">Surname</label>
+		    <input type="text" th:field="*{surname}" id="surname" placeholder="Surname">
+		    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+		    
+		    <label for="firstname">Firstname</label>
+		    <input type="text" th:field="*{firstname}" id="firstname" placeholder="Firstname">
+		    <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+		    
+		    <input type="submit" value="Save">   
+		</form>
+    
+    
+    	<!--  
+        <h2 th:text="${title}"></h2>        
+	    <form action="#" th:action="@{/teacherShow}" th:object="${teacher}" method="POST" enctype="application/x-www-form-urlencoded">
+	    	<table>
+	    		<tr>
+	    			<td>TeacherId</td> 
+	    			<td><input type="text" th:field="*{teacherId}" size=10 disabled/></td> 
+	    		</tr>
+	    		<tr>
+	    			<td>Title</td> 
+	    			<td><input type="text" th:field="*{title}" size=30/></td> 
+	    		</tr>
+	    		<tr>
+	    			<td>Surname</td> 
+	    			<td><input type="text" th:field="*{surname}" size=50/></td> 
+	    		</tr>
+	    		<tr>
+	    			<td>Firstname</td> 
+	    			<td><input type="text" th:field="*{firstname}" size=50/></td> 
+	    		</tr>
+	    		<tr>
+	    			<td>Shortname</td> 
+	    			<td><input type="text" th:field="*{shortName}" size=10/></td> 
+	    		</tr>
+	    		<tr>
+	    			<td>Sex</td> 
+	    			<td><input type="radio" th:field="*{sex}" value="m"/>Male
+	        			<input type="radio" th:field="*{sex}" value="f"/>Female
+	        		</td> 
+	    		</tr>	    				    		
+	    	</table>
+	    	<input type="submit" value="Save" />
+	    </form>	 
+	    -->
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<title th:text="#{department.caption.plural}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+	<body>
+		<div class="container">
+		 	<h2 th:text="#{department.caption.plural}"></h2>
+		 	<div>
+				<a class="btn btn-primary btn-sm mb-3" th:href="@{/mvc/departments/add}" th:text="#{button.add}">...</a>
+				<a class="btn btn-primary btn-sm mb-3" th:href="@{/v1}" th:text="#{page.main}">...</a>
+       	 	</div>
+		 	<br/>
+		 	
+		    <table class="table table-striped table-responsive-md">
+		        <tr>
+					<th>#</th>
+		        	<th th:text="#{department.departmentId}"></th>
+		        	<th th:text="#{department.name}"></th>
+		        	<th th:text="#{department.nameShort}"></th>
+<!--					<th th:text="#{department.nameShort}"></th>-->
+		        	<th th:text="#{department.teacher}"></th>
+					<th th:text="#{page.actions}"></th>
+		            <th>Path</th>
+					<th>Request</th>
+		        </tr>
+		        <tr th:each="department, iStat:${departments}">
+					<td th:text="${iStat.count}">1</td>
+					<td th:text="${department.departmentId}"></td>
+		            <td> 
+		            	<a th:href="@{/mvc/departments/edit/{departmentId}(departmentId=${department.departmentId})}" th:text="${department.name}">...</a>
+		            </td>
+		            <td th:text="${department.nameShort}"></td>
+<!--					<td>[[${department.nameShort}]]</td>-->
+		            <td> 
+		            	<a th:href="@{/mvc/teachers/edit?teacherId={teacherId}(teacherId=${department.getTeacher().teacherId})}" th:text="${department.teacher}">...</a>
+		            </td>
+		            <td> 
+		            	<a class="btn btn-primary btn-sm" th:href="@{/mvc/departments/edit/{departmentId}(departmentId=${department.departmentId})}" th:text="#{button.edit}">...</a>
+		            	<a class="btn btn-primary btn-sm" th:href="@{/mvc/departments/delete/{departmentId}(departmentId=${department.departmentId})}" th:text="#{button.delete}">...</a>
+		            </td>
+					<td>
+						<a th:href="@{/mvc/schoolClasses/showByDepartment/{departmentId}(departmentId=${department.departmentId})}"
+						   th:text="#{schoolClass.caption.plural}">
+							...
+						</a>
+<!--						<a th:href="@{/mvc/schoolClasses/showByDepartment/{departmentId}(departmentId=${department.departmentId})}">-->
+<!--							<div th:text="#{schoolClass.caption.plural}"></div>-->
+<!--						</a>-->
+<!--						<a th:href="@{'/mvc/schoolClasses/showByDepartment/' + ${department.departmentId}}"-->
+<!--						   th:text="#{schoolClass.caption.plural}">-->
+<!--							...-->
+<!--						</a>-->
+					</td>
+		            <td>
+		            	<a th:href="@{/mvc/schoolClasses/showByDepartment?departmentId={departmentId}(departmentId=${department.departmentId})}"
+						   th:text="#{schoolClass.caption.plural}">
+							...
+						</a>
+<!--						<a th:href="@{/mvc/schoolClasses/showByDepartment?departmentId={departmentId}(departmentId=${department.departmentId})}">-->
+<!--							<div th:text="#{schoolClass.caption.plural}"></div>-->
+<!--						</a>-->
+<!--						<a th:href="@{'/mvc/schoolClasses/showByDepartment?departmentId=' + ${department.departmentId}}"-->
+<!--						   th:text="#{schoolClass.caption.plural}">-->
+<!--							...-->
+<!--						</a>-->
+<!--						<a th:href="@{/mvc/schoolClasses/showByDepartment(departmentId=${department.departmentId})}">-->
+<!--							<div th:text="#{schoolClass.caption.plural}"></div>-->
+<!--						</a>-->
+		            </td>
+		        </tr>
+		    </table>       
+	    </div>
+	</body>
+</html>
